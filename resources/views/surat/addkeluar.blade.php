@@ -96,6 +96,16 @@
                             <span class="text-danger">{{ $errors->first('ket') }}</span>
                         @endif
                       </div>
+
+                      <div class="form-group">
+                        <form action="/files" method="POST" enctype="multipart/form-data">
+                          {{csrf_field()}}
+                          <label>Dokumen : (.pdf)</label>
+                            <input type="file" name="dokumen"  accept=".pdf" class="form-control">
+                        @if ($errors->has('dokumen'))
+                            <span class="text-danger">{{ $errors->first('dokumen') }}</span>
+                        @endif
+                      </div>
                       
                     </div>
                     <!-- /.card-body -->

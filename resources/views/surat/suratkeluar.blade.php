@@ -59,7 +59,7 @@
                                 <td>{{ $keluar->tujuan }}</td>
                                 <td>{{ $keluar->ket }}</td>
                                 <td><center>
-                                <a href="" class="btn btn-warning mb-1" data-toggle="tooltip" data-placement="bottom" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                <a href="{{action('KeluarController@edit', $keluar['id'])}}" class="btn btn-warning mb-1" data-toggle="tooltip" data-placement="bottom" title="Edit Data"><i class="fas fa-edit"></i></a>
                                 <a href="#" class="btn btn-danger mb-1 swal-confirm" data-id="{{ $keluar->id}}" data-toggle="tooltip" data-placement="bottom" title="Hapus Data">
                                 <form action="{{ route('keluar-delete' ,$keluar->id) }}" id="delete{{ $keluar->id }}" method="POST">
                                     @csrf
