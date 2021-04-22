@@ -126,7 +126,7 @@
     initComplete: function() {
         this.api().columns(2).every(function() {
             var column = this;
-            var select = $('<select class="form-control"><option value="" selected="true">--All--</option></select>')
+            var select = $('<select class="form-control"><option value="" selected="true">--Tanggal Masuk--</option></select>')
             .appendTo($('#filter-user'))
             .on('change', function() {
                 var val = $.fn.dataTable.util.escapeRegex(
@@ -143,6 +143,8 @@
             });
         });
     },
+
+    
 });
 
     $('#suratkeluar').DataTable({
