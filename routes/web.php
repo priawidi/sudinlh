@@ -26,10 +26,13 @@ Route::group(['middleware' => 'auth'], function () {
     
  
 });
+Route::get('home','SudinController@counter');
+
 
 
 Route::resource('masuk', 'MasukController');
 Route::resource('keluar', 'KeluarController');
+
 
 Route::post('masuk/{id}', 'MasukController@delete')->name('masuk-delete');
 Route::post('keluar/{id}', 'KeluarController@delete')->name('keluar-delete');

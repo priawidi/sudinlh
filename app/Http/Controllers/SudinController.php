@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App \Keluar;
+use App \Masuk;
 
 class SudinController extends Controller
 {
@@ -15,6 +19,15 @@ class SudinController extends Controller
     {
         return view('index');
     }
+
+    public function counter ()
+    {
+        $masuk_counts = Masuk::count();
+        $keluar_counts = Keluar::count();
+        return view('index',compact('masuk_counts', 'keluar_counts'));
+    }
+
+    
 
     /**
      * Show the form for creating a new resource.

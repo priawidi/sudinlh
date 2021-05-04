@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<!--Tampilan Beranda -->
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <div class="container">
@@ -14,34 +15,35 @@
             </p>
             <!-- row -->
             <div class="row">
-              <div class="col-lg-6 col-6">
+              <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3></h3>
+                    <h3> {{$masuk_counts}}</h3>
   
                     <p>Total Surat Masuk</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-inbox"></i>
                   </div>
-                  <a href="masuk" class="nav-link " class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="masuk"class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->
   
-              <div class="col-lg-6 col-6">
+              <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3></h3>
+                    <h3>{{$keluar_counts}}</h3>
   
                     <p>Total Surat Keluar</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-paper-plane"></i>
                   </div>
-                  <a href="keluar" class="nav-link " class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  
+                  <a href="keluar"class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->

@@ -71,7 +71,7 @@ class KeluarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
         //
     }
 
@@ -142,9 +142,9 @@ class KeluarController extends Controller
         }
         
             if ($surat_keluar->save()) {
-                return redirect('masuk')->with('success', 'Data Berhasil Diupdate');
+                return redirect('keluar')->with('success', 'Data Berhasil Diupdate');
             } else {
-                return redirect('masuk')->with('error', 'error message');
+                return redirect('keluar')->with('error', 'error message');
             }
     }
 
