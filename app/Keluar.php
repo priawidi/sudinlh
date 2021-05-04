@@ -19,4 +19,8 @@ class Keluar extends Model
         'ket',
         'dokumen',
     ];
+
+    public static function totalkeluar() {
+        return Keluar::count();
+    }
 }

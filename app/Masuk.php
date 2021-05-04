@@ -19,4 +19,8 @@ class Masuk extends Model
         'ket',
         'dokumen'
     ];
+
+    public static function totalMasuk() {
+        return Masuk::count();
+    }
 }

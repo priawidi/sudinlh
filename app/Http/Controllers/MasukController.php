@@ -32,14 +32,6 @@ class MasukController extends Controller
         return view ('surat.addmasuk');
     }
 
-    public function preview()
-    {
-        $data = ['title' => 'Laravel 7 Generate PDF From View Example Tutorial'];
-        $pdf = PDF::loadView('pdf', $data);
-  
-        return $pdf->download('sudin.pdf');
-    }
-
     /**
      * Store a newly created resource in storage.
      *

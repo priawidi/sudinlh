@@ -26,8 +26,6 @@ Route::group(['middleware' => 'auth'], function () {
     
  
 });
-Route::get('home','SudinController@counter');
-
 
 
 Route::resource('masuk', 'MasukController');

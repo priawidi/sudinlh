@@ -19,7 +19,8 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3> {{$masuk_counts}}</h3>
+                    
+                    <h3> {{ \App\Masuk::totalMasuk() }}</h3>
   
                     <p>Total Surat Masuk</p>
                   </div>
@@ -35,7 +36,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>{{$keluar_counts}}</h3>
+                    <h3> {{ \App\Keluar::totalKeluar() }} </h3>
   
                     <p>Total Surat Keluar</p>
                   </div>
