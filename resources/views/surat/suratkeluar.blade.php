@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <div><h6>Filter</h6><span><a href="/keluar/create" class="btn btn-info float-right"><i class="fas fa-plus"></i>&nbsp;&nbsp;Upload Surat</a></span></div>
                     <div id="filter-user" class="btn-group" role="group"></div><br><br>
-                    <table id="manjadmin-table" class="table table-bordered table-striped">
+                    <table id="suratkeluar-table" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -117,7 +117,7 @@
     
 
     $(document).ready(function() {
-    $('#manjadmin-table').DataTable({
+    $('#suratkeluar-table').DataTable({
     "ordering": true,
     "lengthMenu": [
         [10,25,50,-1],
@@ -142,7 +142,28 @@
                 select.append('<option value="' + d + '">' + d + '</option')
             });
         });
+
+        this.api().columns(5).every(function() {
+            var column = this;
+            var select = $('<select class="form-control"><option value="" selected="true">--Tanggal Surat--</option></select>')
+            .appendTo($('#filter-user'))
+            .on('change', function() {
+                var val = $.fn.dataTable.util.escapeRegex(
+                    $(this).val()
+                );
+
+                column
+                    .search(val ? '^' + val + '$' : '', true,false)
+                    .draw();
+            });
+
+            column.data().unique().sort().each(function(d, j) {
+                select.append('<option value="' + d + '">' + d + '</option')
+            });
+        });
     },
+
+    
 
     
 });
@@ -160,6 +181,8 @@
         "lengthChange": false,
     });
 });
+
+
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
