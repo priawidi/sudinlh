@@ -36,10 +36,18 @@
               <div class="col-12">
                 <div class="card">
                 <div class="card-header">
-                  <div><h4>Tambah Surat</h4></div>
+                  <div><h4>Tambah Surat Masuk</h4></div>
                   <form method="post" action="{{url('masuk')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
+                      
+                      <div class="form-group">
+                        <label for="tgl_diterima">Tanggal Diterima :</label>
+                        <input type="date" class="form-control" name="tgl_diterima" placeholder="Tanggal Diterima">
+                        @if ($errors->has('tgl_diterima'))
+                            <span class="text-danger">{{ $errors->first('tgl_diterima') }}</span>
+                        @endif
+                      </div>
                       <div class="form-group">
                         <label for="nomor_agenda">Nomor Agenda :</label>
                         <input type="text" class="form-control" name="nomor_agenda" placeholder="Nomor Agenda">
@@ -48,55 +56,49 @@
                         @endif
                       </div>
                       <div class="form-group">
-                        <label for="tgl_masuk">Tanggal Masuk :</label>
-                        <input type="date" class="form-control" name="tgl_masuk" placeholder="Tanggal">
-                        @if ($errors->has('tgk_masuk'))
-                            <span class="text-danger">{{ $errors->first('tgl_masuk') }}</span>
+                        <label for="kode_klasifikasi">Kode Klasifikasi :</label>
+                        <input type="text" class="form-control" name="kode_klasifikasi" placeholder="Kode Klasifikasi">
+                        @if ($errors->has('kode_klasifikasi'))
+                            <span class="text-danger">{{ $errors->first('kode_klasifikasi') }}</span>
                         @endif
                       </div>
                       <div class="form-group">
-                        <label for="dari">Dari :</label>
-                        <input type="text" class="form-control" name="dari" placeholder="Dari">
-                        @if ($errors->has('dari'))
-                            <span class="text-danger">{{ $errors->first('dari') }}</span>
+                        <label for="pokok_surat">Pokok Surat :</label>
+                        <input type="text" class="form-control" name="pokok_surat" placeholder="Pokok Surat">
+                        @if ($errors->has('pokok_surat'))
+                            <span class="text-danger">{{ $errors->first('pokok_surat') }}</span>
                         @endif
                       </div>
                       <div class="form-group">
-                        <label for="nomor_surat">No. Surat :</label>
-                        <input type="text" class="form-control" name="nomor_surat" placeholder="No. Surat">
-                        @if ($errors->has('nomor_surat'))
-                            <span class="text-danger">{{ $errors->first('nomor_surat') }}</span>
+                        <label for="tanggal_nomor_surat">Tanggal dan Nomor Surat :</label>
+                        <input type="date" class="form-control" name="tanggal_nomor_surat" placeholder="Tanggal">
+                        @if ($errors->has('tanggal_nomor_surat'))
+                            <span class="text-danger">{{ $errors->first('tanggal_nomor_surat') }}</span>
                         @endif
                       </div>
                       <div class="form-group">
-                        <label for="tgl_surat">Tanggal Surat :</label>
-                        <input type="date" class="form-control" name="tgl_surat" placeholder="Tanggal Surat">
-                        @if ($errors->has('tgl_surat'))
-                            <span class="text-danger">{{ $errors->first('tgl_surat') }}</span>
+                        <label for="asal_surat">Asal Surat :</label>
+                        <input type="text" class="form-control" name="asal_surat" placeholder="asal_surat">
+                        @if ($errors->has('asal_surat'))
+                            <span class="text-danger">{{ $errors->first('asal_surat') }}</span>
                         @endif
                       </div>
                       <div class="form-group">
-                        <label for="perihal_surat">Perihal Surat :</label>
-                        <input type="text" class="form-control" name="perihal_surat" placeholder="Perihal Surat">
-                        @if ($errors->has('perihal_surat'))
-                            <span class="text-danger">{{ $errors->first('perihal_surat') }}</span>
+                        <label for="ditujukan">Ditujukan :</label>
+                        <input type="text" class="form-control" name="ditujukan" placeholder="Ditujukan">
+                        @if ($errors->has('ditujukan'))
+                            <span class="text-danger">{{ $errors->first('ditujukan') }}</span>
                         @endif
                       </div>
                       <div class="form-group">
-                        <label for="tujuan">Tujuan :</label>
-                        <input type="text" class="form-control" name="tujuan" placeholder="Tujuan">
-                        @if ($errors->has('tujuan'))
-                            <span class="text-danger">{{ $errors->first('tujuan') }}</span>
-                        @endif
-                      </div>
-                      <div class="form-group">
-                        <label for="ket">Keterangan :</label>
-                        <input type="text" class="form-control" name="ket" placeholder="Keterangan">
-                        @if ($errors->has('ket'))
-                            <span class="text-danger">{{ $errors->first('ket') }}</span>
+                        <label for="keterangan">Keterangan :</label>
+                        <input type="text" class="form-control" name="keterangan" placeholder="Keterangan">
+                        @if ($errors->has('keterangan'))
+                            <span class="text-danger">{{ $errors->first('keterangan') }}</span>
                         @endif
                       </div>
 
+                      <!--
                       <div class="form-group">
                         <form action="/files" method="POST" enctype="multipart/form-data">
                           {{csrf_field()}}
@@ -106,6 +108,7 @@
                             <span class="text-danger">{{ $errors->first('dokumen') }}</span>
                         @endif
                       </div>
+                    -->
                       
                     </div>
                     <!-- /.card-body -->

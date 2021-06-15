@@ -34,14 +34,14 @@
                     <table id="suratmasuk-table" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>No.</th>
+                                <th>No Urut</th>
+                                <th>Tanggal Diterima</th>
                                 <th>Nomor Agenda</th>
-                                <th>Tanggal Masuk</th>
-                                <th>Dari</th>
-                                <th>No. Surat</th>
-                                <th>Tanggal Surat</th>
-                                <th>Perihal Surat</th>
-                                <th>Disampaikan Kepada</th>
+                                <th>Kode Klasifikasi</th>
+                                <th>Pokok Surat</th>
+                                <th>Tanggal Dan Nomor Surat</th>
+                                <th>Asal Surat</th>
+                                <th>Ditujukan/Dikirim</th>
                                 <th>Keterangan</th>
                                 <th><center>Aksi</center></th>
                             </tr>
@@ -50,15 +50,15 @@
                             <?php $i = 0; ?>
                             @foreach($surat_masuk as $masuk)
                             <tr>
-                                <td>{{ ++$i }}</td>
+                                <td>{{ $masuk->id }}</td>
+                                <td>{{ $masuk->tgl_diterima }}</td>
                                 <td>{{ $masuk->nomor_agenda }}</td>
-                                <td>{{ $masuk->tgl_masuk }}</td>
-                                <td>{{ $masuk->dari }}</td>
-                                <td>{{ $masuk->nomor_surat }}</td>
-                                <td>{{ $masuk->tgl_surat }}</td>
-                                <td>{{ $masuk->perihal_surat }}</td>
-                                <td>{{ $masuk->tujuan }}</td>
-                                <td>{{ $masuk->ket }}</td>
+                                <td>{{ $masuk->kode_klasifikasi }}</td>
+                                <td>{{ $masuk->pokok_surat }}</td>
+                                <td>{{ $masuk->tanggal_nomor_surat }}</td>
+                                <td>{{ $masuk->asal_surat }}</td>
+                                <td>{{ $masuk->ditujukan }}</td>
+                                <td>{{ $masuk->keterangan }}</td>
                                 <td><center>
                                 <a href="{{action('MasukController@edit', $masuk['id'])}}" class="btn btn-warning mb-1" data-toggle="tooltip" data-placement="bottom" title="Edit Data"><i class="fas fa-edit"></i></a>
                                 <a href="#" class="btn btn-danger mb-1 swal-confirm" data-id="{{ $masuk->id}}" data-toggle="tooltip" data-placement="bottom" title="Hapus Data">
@@ -126,28 +126,10 @@
         [10,25,50, "All"]
     ],
     initComplete: function() {
-        this.api().columns(2).every(function() {
+        
+        this.api().columns(6).every(function() {
             var column = this;
-            var select = $('<select class="form-control"><option value="" selected="true">--Tanggal Masuk--</option></select>')
-            .appendTo($('#filter-user'))
-            .on('change', function() {
-                var val = $.fn.dataTable.util.escapeRegex(
-                    $(this).val()
-                );
-
-                column
-                    .search(val ? '^' + val + '$' : '', true,false)
-                    .draw();
-            });
-
-            column.data().unique().sort().each(function(d, j) {
-                select.append('<option value="' + d + '">' + d + '</option')
-            });
-        });
-
-        this.api().columns(5).every(function() {
-            var column = this;
-            var select = $('<select class="form-control"><option value="" selected="true">--Tanggal Surat--</option></select>')
+            var select = $('<select class="form-control"><option value="" selected="true">--Asal Surat--</option></select>')
             .appendTo($('#filter-user'))
             .on('change', function() {
                 var val = $.fn.dataTable.util.escapeRegex(
@@ -166,7 +148,7 @@
     },
 });
 
-    $('#user').DataTable({
+    $('#suratmasuk').DataTable({
         "lengthMenu": [
            [10,25,50,-1],
         [10,25,50, "All" ]

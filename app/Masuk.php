@@ -9,15 +9,15 @@ class Masuk extends Model
     protected $table = 'suratmasuk';
 
     protected $fillable = [
+        'tgl_diterima',
         'nomor_agenda',
-        'tgl_masuk',
-        'dari',
-        'nomor_surat',
-        'tgl_surat',
-        'perihal_surat',
-        'tujuan',
-        'ket',
-        'dokumen'
+        'kode_klasifikasi',
+        'pokok_surat',
+        'tanggal_nomor_surat',
+        'asal_surat',
+        'ditujukan',
+        'keterangan',
+        //'dokumen'
     ];
 
     public static function totalMasuk() {

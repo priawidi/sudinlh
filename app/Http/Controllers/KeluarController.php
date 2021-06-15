@@ -39,14 +39,14 @@ class KeluarController extends Controller
     public function store(Request $request)
     {
         $surat_keluar = new Keluar;
+        $surat_keluar->tgl_diterima = ($request->tgl_diterima);
         $surat_keluar->nomor_agenda = ($request->nomor_agenda);
-        $surat_keluar->tgl_masuk = ($request->tgl_masuk);
-        $surat_keluar->untuk = ($request->untuk);
-        $surat_keluar->nomor_surat = ($request->nomor_surat);
-        $surat_keluar->tgl_surat = ($request->tgl_surat);
-        $surat_keluar->perihal_surat = ($request->perihal_surat);
-        $surat_keluar->tujuan = ($request->tujuan);
-        $surat_keluar->ket = ($request->ket);
+        $surat_keluar->kode_klasifikasi = ($request->kode_klasifikasi);
+        $surat_keluar->pokok_surat = ($request->pokok_surat);
+        $surat_keluar->tanggal_nomor_surat = ($request->tanggal_nomor_surat);
+        $surat_keluar->asal_surat = ($request->asal_surat);
+        $surat_keluar->ditujukan = ($request->ditujukan);
+        $surat_keluar->keterangan = ($request->keterangan);
         $surat_keluar->dokumen = ($request->dokumen);
 
         $rules = array(
@@ -103,14 +103,14 @@ class KeluarController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
+            'tgl_diterima' => 'required',
             'nomor_agenda' => 'required',
-            'tgl_masuk' => 'required',
-            'dari' => 'required',
-            'nomor_surat' => 'required',
-            'tgl_surat' => 'required',
-            'perihal_surat' => 'required',
-            'tujuan' => 'required',
-            'ket' => 'required',
+            'kode_klasifikasi' => 'required',
+            'pokok_surat' => 'required',
+            'tanggal_nomor_surat' => 'required',
+            'asal_surat' => 'required',
+            'ditujukan' => 'required',
+            'keterangan' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -121,16 +121,17 @@ class KeluarController extends Controller
         $surat_keluar = Keluar::find($id);
 
         $surat_keluar->update([
-        'nomor_agenda' => ($request->nomor_agenda),
-        'tgl_masuk' => ($request->tgl_masuk),
-        'untuk' => ($request->untuk),
-        'nomor_surat' => ($request->nomor_surat),
-        'tgl_surat' => ($request->tgl_surat),
-        'perihal_surat' => ($request->perihal_surat),
-        'tujuan' => ($request->tujuan),
-        'ket' => ($request->ket),
+            'tgl_diterima' => ($request->tgl_diterima),
+            'nomor_agenda' => ($request->nomor_agenda),
+            'kode_klasifikasi' => ($request->kode_klasifikasi),
+            'pokok_surat' => ($request->pokok_surat),
+            'tanggal_nomor_surat' => ($request->tanggal_nomor_surat),
+            'asal_surat' => ($request->asal_surat),
+            'ditujukan' => ($request->ditujukan),
+            'keterangan' => ($request->keterangan),
         ]);
 
+        /*
         $dokumen = $request->file('dokumen');
         if($dokumen)
         {
@@ -140,7 +141,7 @@ class KeluarController extends Controller
             $dokumen->move($tujuan_upload, $dokumen->getClientOriginalName());
             $surat_keluar->dokumen = $dokumen->getClientOriginalName();
         }
-        
+        */
             if ($surat_keluar->save()) {
                 return redirect('keluar')->with('success', 'Data Berhasil Diupdate');
             } else {

@@ -14,16 +14,16 @@ class CreateSuratmasukTable extends Migration
     public function up()
     {
         Schema::create('suratmasuk', function (Blueprint $table) {
-            $table->id();
+            $table->id('nomor_urut');
+            $table->date('tgl_diterima');
             $table->string('nomor_agenda');
-            $table->date('tgl_masuk');
-            $table->string('dari');
-            $table->string('nomor_surat');
-            $table->date('tgl_surat');
-            $table->string('perihal_surat');
-            $table->string('tujuan');
-            $table->string('ket');
-            $table->string('dokumen')->nullable;
+            $table->string('kode_klasifikasi');
+            $table->string('pokok_surat');
+            $table->date('tanggal_nomor_surat');
+            $table->string('asal_surat');
+            $table->string('ditujukan');
+            $table->string('keterangan');
+            //$table->string('dokumen')->nullable;
             $table->timestamps();
         });
     }

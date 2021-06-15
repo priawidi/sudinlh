@@ -33,14 +33,14 @@
                     <table id="suratkeluar-table" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>No.</th>
+                                <th>No Urut</th>
+                                <th>Tanggal Diterima</th>
                                 <th>Nomor Agenda</th>
-                                <th>Tanggal Masuk</th>
-                                <th>Untuk</th>
-                                <th>No. Surat</th>
-                                <th>Tanggal Surat</th>
-                                <th>Perihal Surat</th>
-                                <th>Disampaikan Kepada</th>
+                                <th>Kode Klasifikasi</th>
+                                <th>Pokok Surat</th>
+                                <th>Tanggal Dan Nomor Surat</th>
+                                <th>Asal Surat</th>
+                                <th>Ditujukan/Dikirim</th>
                                 <th>Keterangan</th>
                                 <th><center>Aksi</center></th>
                             </tr>
@@ -49,15 +49,15 @@
                             <?php $i = 0; ?>
                             @foreach($surat_keluar as $keluar)
                             <tr>
-                                <td>{{ ++$i }}</td>
+                                <td>{{ $keluar->id }}</td>
+                                <td>{{ $keluar->tgl_diterima }}</td>
                                 <td>{{ $keluar->nomor_agenda }}</td>
-                                <td>{{ $keluar->tgl_masuk }}</td>
-                                <td>{{ $keluar->untuk }}</td>
-                                <td>{{ $keluar->nomor_surat }}</td>
-                                <td>{{ $keluar->tgl_surat }}</td>
-                                <td>{{ $keluar->perihal_surat }}</td>
-                                <td>{{ $keluar->tujuan }}</td>
-                                <td>{{ $keluar->ket }}</td>
+                                <td>{{ $keluar->kode_klasifikasi }}</td>
+                                <td>{{ $keluar->pokok_surat }}</td>
+                                <td>{{ $keluar->tanggal_nomor_surat }}</td>
+                                <td>{{ $keluar->asal_surat }}</td>
+                                <td>{{ $keluar->ditujukan }}</td>
+                                <td>{{ $keluar->keterangan }}</td>
                                 <td><center>
                                 <a href="{{action('KeluarController@edit', $keluar['id'])}}" class="btn btn-warning mb-1" data-toggle="tooltip" data-placement="bottom" title="Edit Data"><i class="fas fa-edit"></i></a>
                                 <a href="#" class="btn btn-danger mb-1 swal-confirm" data-id="{{ $keluar->id}}" data-toggle="tooltip" data-placement="bottom" title="Hapus Data">
@@ -124,28 +124,10 @@
         [10,25,50, "All"]
     ],
     initComplete: function() {
-        this.api().columns(2).every(function() {
+      
+        this.api().columns(6).every(function() {
             var column = this;
-            var select = $('<select class="form-control"><option value="" selected="true">--Tanggal Masuk--</option></select>')
-            .appendTo($('#filter-user'))
-            .on('change', function() {
-                var val = $.fn.dataTable.util.escapeRegex(
-                    $(this).val()
-                );
-
-                column
-                    .search(val ? '^' + val + '$' : '', true,false)
-                    .draw();
-            });
-
-            column.data().unique().sort().each(function(d, j) {
-                select.append('<option value="' + d + '">' + d + '</option')
-            });
-        });
-
-        this.api().columns(5).every(function() {
-            var column = this;
-            var select = $('<select class="form-control"><option value="" selected="true">--Tanggal Surat--</option></select>')
+            var select = $('<select class="form-control"><option value="" selected="true">--Asal Surat--</option></select>')
             .appendTo($('#filter-user'))
             .on('change', function() {
                 var val = $.fn.dataTable.util.escapeRegex(

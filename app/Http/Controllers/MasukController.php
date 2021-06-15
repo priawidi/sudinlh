@@ -41,15 +41,15 @@ class MasukController extends Controller
     public function store(Request $request)
     {
         $surat_masuk = new Masuk;
+        $surat_masuk->tgl_diterima = ($request->tgl_diterima);
         $surat_masuk->nomor_agenda = ($request->nomor_agenda);
-        $surat_masuk->tgl_masuk = ($request->tgl_masuk);
-        $surat_masuk->dari = ($request->dari);
-        $surat_masuk->nomor_surat = ($request->nomor_surat);
-        $surat_masuk->tgl_surat = ($request->tgl_surat);
-        $surat_masuk->perihal_surat = ($request->perihal_surat);
-        $surat_masuk->tujuan = ($request->tujuan);
-        $surat_masuk->ket = ($request->ket);
-        $surat_masuk->dokumen = ($request->dokumen);
+        $surat_masuk->kode_klasifikasi = ($request->kode_klasifikasi);
+        $surat_masuk->pokok_surat = ($request->pokok_surat);
+        $surat_masuk->tanggal_nomor_surat = ($request->tanggal_nomor_surat);
+        $surat_masuk->asal_surat = ($request->asal_surat);
+        $surat_masuk->ditujukan = ($request->ditujukan);
+        $surat_masuk->keterangan = ($request->keterangan);
+        /*$surat_masuk->dokumen = ($request->dokumen);
 
         $rules = array(
             'dokumen' => 'required|mimes:pdf'
@@ -59,6 +59,7 @@ class MasukController extends Controller
         $tujuan_upload = 'document-upload';
         $dokumen->move($tujuan_upload, $dokumen->getClientOriginalName());
         $surat_masuk->dokumen = $dokumen->getClientOriginalName();
+        */
 
         $simpan = $surat_masuk->save();
  
@@ -107,14 +108,14 @@ class MasukController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
+            'tgl_diterima' => 'required',
             'nomor_agenda' => 'required',
-            'tgl_masuk' => 'required',
-            'dari' => 'required',
-            'nomor_surat' => 'required',
-            'tgl_surat' => 'required',
-            'perihal_surat' => 'required',
-            'tujuan' => 'required',
-            'ket' => 'required',
+            'kode_klasifikasi' => 'required',
+            'pokok_surat' => 'required',
+            'tanggal_nomor_surat' => 'required',
+            'asal_surat' => 'required',
+            'ditujukan' => 'required',
+            'keterangan' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -125,14 +126,14 @@ class MasukController extends Controller
         $surat_masuk = Masuk::find($id);
 
         $surat_masuk->update([
+        'tgl_diterima' => ($request->tgl_diterima),
         'nomor_agenda' => ($request->nomor_agenda),
-        'tgl_masuk' => ($request->tgl_masuk),
-        'dari' => ($request->dari),
-        'nomor_surat' => ($request->nomor_surat),
-        'tgl_surat' => ($request->tgl_surat),
-        'perihal_surat' => ($request->perihal_surat),
-        'tujuan' => ($request->tujuan),
-        'ket' => ($request->ket),
+        'kode_klasifikasi' => ($request->kode_klasifikasi),
+        'pokok_surat' => ($request->pokok_surat),
+        'tanggal_nomor_surat' => ($request->tanggal_nomor_surat),
+        'asal_surat' => ($request->asal_surat),
+        'ditujukan' => ($request->ditujukan),
+        'keterangan' => ($request->keterangan),
         ]);
 
         $dokumen = $request->file('dokumen');

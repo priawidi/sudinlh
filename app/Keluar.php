@@ -9,15 +9,15 @@ class Keluar extends Model
     protected $table = 'suratkeluar';
 
     protected $fillable = [
+        'tgl_diterima',
         'nomor_agenda',
-        'tgl_masuk',
-        'untuk',
-        'nomor_surat',
-        'tgl_surat',
-        'perihal_surat',
-        'tujuan',
-        'ket',
-        'dokumen',
+        'kode_klasifikasi',
+        'pokok_surat',
+        'tanggal_nomor_surat',
+        'asal_surat',
+        'ditujukan',
+        'keterangan',
+        //'dokumen'
     ];
 
     public static function totalkeluar() {
