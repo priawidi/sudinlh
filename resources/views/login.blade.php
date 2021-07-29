@@ -12,7 +12,7 @@
         <div class="col-md-4 offset-md-4 mt-5">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="text-center">Form Login</h3>
+                    <h3 class="text-center">Login</h3>
                 </div>
                 <form action="{{ route('login') }}" method="post">
                 @csrf
@@ -49,10 +49,10 @@
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
                 </div>
-                <div class="card-footer">
+                {{-- <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-block">Log In</button>
                     <p class="text-center">Belum punya akun? <a href="{{ route('register') }}">Register</a> sekarang!</p>
-                </div>
+                </div> --}}
                 </form>
             </div>
         </div>
