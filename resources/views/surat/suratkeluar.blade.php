@@ -46,10 +46,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 0; ?>
+                            <?php $no = 1; ?>
                             @foreach($surat_keluar as $keluar)
                             <tr>
-                                <td>{{ $keluar->id }}</td>
+                                <td>{{ $no }}</td>
                                 <td>{{ $keluar->tgl_diterima }}</td>
                                 <td>{{ $keluar->nomor_agenda }}</td>
                                 <td>{{ $keluar->kode_klasifikasi }}</td>
@@ -69,6 +69,7 @@
                                 </a>
                                 </td>
                             </tr>
+                            <?php $no++ ; ?>
                             @endforeach
                         </tbody>
                     </table>

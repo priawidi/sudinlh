@@ -47,10 +47,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 0; ?>
+                            <?php $no = 1; ?>
                             @foreach($surat_masuk as $masuk)
                             <tr>
-                                <td>{{ $masuk->id }}</td>
+                                <td>{{ $no }}</td>
                                 <td>{{ $masuk->tgl_diterima }}</td>
                                 <td>{{ $masuk->nomor_agenda }}</td>
                                 <td>{{ $masuk->kode_klasifikasi }}</td>
@@ -70,6 +70,7 @@
                                 </a>
                                 </td>
                             </tr>
+                            <?php $no++ ;?>
     
                             @endforeach
                         </tbody>
