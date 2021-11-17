@@ -60,8 +60,8 @@
                                 <td>{{ $keluar->keterangan }}</td>
                                 <td><center>
                                 <a href="{{action('KeluarController@edit', $keluar['id'])}}" class="btn btn-warning mb-1" data-toggle="tooltip" data-placement="bottom" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger mb-1 swal-confirm" data-id="{{ $keluar->id}}" data-toggle="tooltip" data-placement="bottom" title="Hapus Data">
-                                <form action="{{ route('keluar-delete' ,$keluar->id) }}" id="delete{{ $keluar->id }}" method="POST">
+                                <a href="" onclick="if(confirm('Do you want to delete this letter?'))event.preventDefault(); document.getElementById('delete-{{$keluar->id}}').submit();" class="btn btn-danger mb-1" data-toggle="tooltip" data-placement="bottom" title="Hapus Surat">
+                                    <form action="{{ route('keluar-delete',$keluar->id) }}" id="delete-{{ $keluar->id }}" method="POST">
                                     @csrf
                                     @method('delete')
                                     </form>

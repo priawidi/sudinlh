@@ -61,8 +61,8 @@
                                 <td>{{ $masuk->keterangan }}</td>
                                 <td><center>
                                 <a href="{{action('MasukController@edit', $masuk['id'])}}" class="btn btn-warning mb-1" data-toggle="tooltip" data-placement="bottom" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger mb-1 swal-confirm" data-id="{{ $masuk->id}}" data-toggle="tooltip" data-placement="bottom" title="Hapus Data">
-                                <form action="{{ route('masuk-delete' ,$masuk->id) }}" id="delete{{ $masuk->id }}" method="POST">
+                                <a href="" onclick="if(confirm('Do you want to delete this letter?'))event.preventDefault(); document.getElementById('delete-{{$masuk->id}}').submit();" class="btn btn-danger mb-1" data-toggle="tooltip" data-placement="bottom" title="Hapus Surat">
+                                    <form action="{{ route('masuk-delete',$masuk->id) }}" id="delete-{{ $masuk->id }}" method="POST">
                                     @csrf
                                     @method('delete')
                                     </form>
@@ -89,34 +89,7 @@
 @section('footer')
     <!-- page script -->
     <script>
-
-    $(".swal-confirm").click(function(e) {
-        id = e.target.dataset.id;
-        Swal.fire({
-            title: 'Apakah Anda Yakin?',
-            text: 'Data yang sudah dihapus tidak dapat dikembalikan lagi!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Ya!',
-            cancelButtonText: 'Tidak'
-            }).then((result) => {
-            if (result.value) {
-                Swal.fire(
-                'Deleted!',
-                'Data Berhasil Di Hapus',
-                'success'
-                );
-                $(`#delete${id}`).submit();
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-                Swal.fire(
-                'Cancelled',
-                'Data Batal Di Hapus',
-                'error'
-                )
-            }
-        });
-    });
-    
+   
 
     $(document).ready(function() {
     $('#suratmasuk-table').DataTable({

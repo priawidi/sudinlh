@@ -14,7 +14,7 @@ class CreateSuratmasukTable extends Migration
     public function up()
     {
         Schema::create('suratmasuk', function (Blueprint $table) {
-            $table->id('nomor_urut');
+            $table->id();
             $table->date('tgl_diterima');
             $table->string('nomor_agenda');
             $table->string('kode_klasifikasi');

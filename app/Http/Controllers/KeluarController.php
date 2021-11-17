@@ -47,16 +47,7 @@ class KeluarController extends Controller
         $surat_keluar->asal_surat = ($request->asal_surat);
         $surat_keluar->ditujukan = ($request->ditujukan);
         $surat_keluar->keterangan = ($request->keterangan);
-        $surat_keluar->dokumen = ($request->dokumen);
-
-        $rules = array(
-            'dokumen' => 'required|mimes:pdf'
-            );
-
-        $dokumen = $request->file('dokumen');
-        $tujuan_upload = 'document-upload';
-        $dokumen->move($tujuan_upload, $dokumen->getClientOriginalName());
-        $surat_keluar->dokumen = $dokumen->getClientOriginalName();
+    
        
         $simpan = $surat_keluar->save();
  

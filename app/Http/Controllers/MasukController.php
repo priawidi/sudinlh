@@ -11,33 +11,20 @@ use DB;
 
 class MasukController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
         $surat_masuk = Masuk::all();
         return view ('surat.suratmasuk',compact('surat_masuk'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view ('surat.addmasuk');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $surat_masuk = new Masuk;
@@ -49,17 +36,6 @@ class MasukController extends Controller
         $surat_masuk->asal_surat = ($request->asal_surat);
         $surat_masuk->ditujukan = ($request->ditujukan);
         $surat_masuk->keterangan = ($request->keterangan);
-        /*$surat_masuk->dokumen = ($request->dokumen);
-
-        $rules = array(
-            'dokumen' => 'required|mimes:pdf'
-            );
-
-        $dokumen = $request->file('dokumen');
-        $tujuan_upload = 'document-upload';
-        $dokumen->move($tujuan_upload, $dokumen->getClientOriginalName());
-        $surat_masuk->dokumen = $dokumen->getClientOriginalName();
-        */
 
         $simpan = $surat_masuk->save();
  
@@ -67,28 +43,18 @@ class MasukController extends Controller
  
      }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         //return view('surat_masuk.show',compact('surat_masuk'));
     }
 
 
-    public function download($dokumen)
-    {
-        return response()->download('document-upload/'.$dokumen);
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // public function download($dokumen)
+    // {
+    //     return response()->download('document-upload/'.$dokumen);
+    // }
+  
     public function edit($id)
     {
         $surat_masuk = Masuk::find($id);
@@ -97,13 +63,7 @@ class MasukController extends Controller
 
 
     
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
 
@@ -154,12 +114,6 @@ class MasukController extends Controller
     
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Masuk::where('id',$id)->delete();
